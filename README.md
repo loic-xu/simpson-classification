@@ -1,6 +1,6 @@
 # simpson-classification
 
-Ce projet propose deux modèles CNN pour la classification des personnages des Simpson : un modèle CNN simple et un modèle CNN utilisant des techniques de Data Augmentation et Dropout.
+Ce projet propose deux modèles CNN (réseau de neurones convolutif) pour la classification des personnages des Simpson : un modèle CNN simple et un modèle CNN utilisant des techniques de Data Augmentation et Dropout.
 
 ## Dataset d'images 
 
