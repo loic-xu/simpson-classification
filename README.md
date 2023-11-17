@@ -16,7 +16,7 @@ Le dataset d'images est disponible sur [Kaggle](https://www.kaggle.com/datasets/
 
 Le projet est organisé comme suit :
 - **simpsons_classification.ipynb :** Jupyter Notebook contenant le code pour le classificateur de personnages Simpsons utilisant des réseaux de neurones convolutionnels (CNN).
-- **/model :** Contient les sauvegardes des modèles CNN entraînés, ainsi que les fichiers CSV pour les métriques.
+- **/model :** Contient les sauvegardes des modèles CNN entraînés au format h5, ainsi que les fichiers CSV pour les métriques.
 - **/media :** Emplacement pour stocker les graphiques de performance des modèles et quelques exemples de prédiction d'image.
 
 # Exemple 
