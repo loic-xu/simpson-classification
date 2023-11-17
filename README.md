@@ -19,7 +19,7 @@ Le projet est organisé comme suit :
 - **/model :** Contient les sauvegardes des modèles CNN entraînés au format h5, ainsi que les fichiers CSV pour les métriques.
 - **/media :** Emplacement pour stocker les graphiques de performance des modèles et quelques exemples de prédiction d'image.
 
-# Exemple 
+## Exemples de prédiction
 ![Bart](media/bart_output.png)
 
 ![Kent](media/kent_output.png)
