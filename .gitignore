@@ -1,0 +1,5 @@
+SimCLR/data/
+SimCLR/test/
+SimCLR/train/
+SimCLR/val/
+models_weights/
