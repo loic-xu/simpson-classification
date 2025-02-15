@@ -1,39 +1,39 @@
-# simpson-classification
+# Simpson Classification with SimCLR
 
-Ce projet propose deux modèles CNN (réseau de neurones convolutif) pour la classification des personnages des Simpson : un modèle CNN simple et un modèle CNN utilisant des techniques de Data Augmentation et Dropout.
+This project proposes two approaches for classifying Simpson characters: a **Simple CNN** and a **SimCLR** approach for unsupervised learning followed by classification. The dataset is filtered to include only classes with more than 300 images, resulting in 19 available Simpson characters. The number of images per class is limited to 300, with specific allocations for training (70%), validation (10%), and testing (20%). 
 
-## Dataset d'images 
+Initially, the Keras part used the whole dataset and achieved an accuracy of 84% on test set. However, to reduce training time, the project experiments SimCLR with fewer images and labels.
 
-Le dataset d'images est disponible sur [Kaggle](https://www.kaggle.com/datasets/alexattia/the-simpsons-characters-dataset). Il contient plus de 20 000 images de 42 personnages des Simpson. 
+## 📂 Image Dataset
 
-## Bibliothèques Utilisées
-  
-- **TensorFlow / Keras :** pour la construction et l'entraînement des réseaux de neurones
+The image dataset is available on [Kaggle](https://www.kaggle.com/datasets/alexattia/the-simpsons-characters-dataset). It contains over 20,000 images of 42 Simpson characters. For this project, only classes with more than 300 images are used, resulting in 19 characters. The dataset is further balanced to include **300 images per class**.
 
-- **Numpy / Matplotlib.pyplot :** pour la manipulation des données et la visualisation graphique.
+## 🛠️ Libraries Used
 
-## Structure du Projet
+- **PyTorch**: For building and training neural networks.
+- **Numpy / Matplotlib.pyplot**: For data manipulation and visualization.
+- **Keras**: Used initially for classification with the whole dataset.
 
-Le projet est organisé comme suit :
-- **simpsons_classification.ipynb :** Jupyter Notebook contenant le code pour le classificateur de personnages Simpsons utilisant des réseaux de neurones convolutionnels (CNN).
-- **/model :** Contient les sauvegardes des modèles CNN entraînés au format h5, ainsi que les fichiers CSV pour les métriques.
-- **/media :** Emplacement pour stocker les graphiques de performance des modèles et quelques exemples de prédiction d'image.
 
-## Exemples de prédiction
-![Bart](media/bart_output.png)
+## 🔍 Classification Approaches and Comparison
 
-![Kent](media/kent_output.png)
+### 1. **Simple CNN**
+A basic CNN model for classifying Simpson characters.
+- **Accuracy**: 33.14%
+- **Issue**: Overfitting (the model memorizes training data instead of generalizing).
+- **Dataset**: Uses 50 labels per class for classification.
 
-## Comparaison des modèles 
-Les graphiques montrent les métriques d'accuracy et de loss pour l'ensemble de données d'entraînement et de validation des deux modèles :
+### 2. **SimCLR**
+An unsupervised learning approach followed by classification.
+- **Principle**: SimCLR learns robust image representations by maximizing agreement between augmented views of the same image (positive pairs) while minimizing agreement with other images (negative pairs).
+- **Steps**:
+  1. **Unsupervised Learning**: Use an encoder to extract image representations.
+  2. **Classification**: Use the learned representations to train a linear classifier.
+- **Accuracy**: 46.52% (improvement of 13% compared to the basic CNN).
+- **Issue**: Requires more time to train.
+- **Dataset**: Uses 210 images per class for SimCLR training and 50 labels per class for classification.
 
-**CNN simple - Précision de 73.56%**
-![Graphique](media/metrics_modele_simple.png)
-On remarque que val_accuracy (la précision sur le dataset de validation) tend vers 0.72 au fur et à mesures de l'entraînement du modèle tandis que train_accuracy (la précision sur le dataset d'entraînement) continue d'augmenter jusqu'à quasiment 1. 
-On a un phénomène d'overfitting : le modèle mémorise les détails spécifiques des données d'entraînement au lieu d'apprendre des caractéristiques générales. Cela se traduit par une faible capacité à généraliser, c'est-à-dire à bien se comporter sur de nouvelles données. On peut le voir sur le graphique d'erreurs.
+## 📚 References
 
-**CNN avec Data Augmentation et Dropout - Précision de 83.95%**
-![Graphique](media/metrics_modele_dataaugmentation_dropout.png)
-La Data Augmentation enrichit le jeu de données en appliquant des transformations aléatoires aux images d'entraînement, ce qui expose le modèle à une plus grande variété de cas. 
-Le Dropout, quant à lui, consiste à aléatoirement désactiver un pourcentage des neurones pendant l'entraînement, forçant ainsi le réseau à ne pas trop s'appuyer sur des activations spécifiques.
-La combinaison de ces techniques dans le modèle avec Data Augmentation et Dropout permet généralement d'améliorer la capacité du modèle à généraliser et donc à réguler l'overfitting. On peut le voir sur les graphiques, l'écart entre val_accuracy et train_accuracy a fortement diminuté, pareil pour l'erreur.
+- [Kaggle Dataset](https://www.kaggle.com/datasets/alexattia/the-simpsons-characters-dataset)
+- SimCLR: [A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/abs/2002.05709)
